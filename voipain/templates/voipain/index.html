@@ -1,0 +1,19 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Voipain</title>
+        <link rel="Stylesheet" type="text/css" href="{% static 'voipain/css/index.css' %}" />
+    </head>
+    <body>
+        <form class="post" action="/newUser" method="post">{% csrf_token %}
+            <label for="name">Prénom & nom : </label><input type="text" name="name" value=""><br>
+            <label for="adress">Adresse : </label><input type="text" name="adress" value=""><br>
+            <label for="numberBaguette">Nombre de baguettes : </label><input type="number" name="numberBaguette" value="1"><br>
+            <input type="submit" name="submit" value="Envoyer une demande">
+        </form>
+    </body>
+</html>
