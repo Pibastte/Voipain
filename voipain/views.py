@@ -12,13 +12,34 @@ import datetime
 
 # Create your views here.
 
+class RegisterDemand(generic.ListView):
+    template_name = 'voipain/registerDemand.html'
+
+    def get_queryset(self):
+        return True
+
 class IndexView(generic.ListView):
     template_name = 'voipain/index.html'
 
     def get_queryset(self):
         return True
 
-def NewUser(request):
+class SeeDemands(generic.ListView):
+    template_name = 'voipain/seeDemands.html'
+    context_object_name = 'demands'
+
+    def get_queryset(self):
+        return User.objects.filter(date=datetime.date.today()).filter(pickedUp=False)
+
+class CheckPickUp(generic.ListView):
+    template_name = 'voipain/seeDemandsPickedUp.html'
+    context_object_name = 'demands'
+
+    def get_queryset(self):
+        return User.objects.filter(date=datetime.date.today()).filter(pickedUp=True)
+
+# POST
+def NewDemand(request):
     print(request.POST)
     print(request.POST['name'])
     print(request.POST['adress'])
@@ -31,4 +52,13 @@ def NewUser(request):
         u.date = datetime.date.today()
     u.save()
 
+    return HttpResponseRedirect('/')
+
+def NewPickUp(request):
+    print(request.POST['adress'])
+    if (User.objects.filter(name=request.POST['name']).count() != 0):
+        u = User.objects.get(name=request.POST['name'])
+        u.adressPickUp = request.POST['adress']
+        u.pickedUp = True
+        u.save()
     return HttpResponseRedirect('/')

@@ -1,0 +1,33 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="Stylesheet" type="text/css" href="{% static 'voipain/css/seeDemands.css' %}" />
+        <link rel="stylesheet" href="{% static 'voipain/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'voipain/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'voipain/css/templatemo-blue.css' %}">
+    </head>
+    <body>
+        {% for demand in demands %}
+        <section class="container">
+        	<div class="row">
+        		<div class="col-md-6 col-sm-8">
+        			<div class="education">
+        				<h2 class="white">{{ demand.name }}</h2>
+                        <div class="education-content">
+        					<h5>{{ demand.adressPickUp }}</h5>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        {% endfor %}
+        <script src="{% static 'voipain/js/jquery.js' %}"></script>
+        <script src="{% static 'voipain/js/bootstrap.min.js' %}"></script>
+        <!-- <script src="{% static 'voipain/js/custom.js' %}"></script> -->
+    </body>
+</html>

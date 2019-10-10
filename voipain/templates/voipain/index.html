@@ -6,14 +6,50 @@
     <head>
         <meta charset="utf-8">
         <title>Voipain</title>
-        <link rel="Stylesheet" type="text/css" href="{% static 'voipain/css/index.css' %}" />
+        <link rel="Stylesheet" type="text/css" href="{% static 'voipain/css/seeDemands.css' %}" />
+        <link rel="stylesheet" href="{% static 'voipain/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'voipain/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'voipain/css/templatemo-blue.css' %}">
     </head>
     <body>
-        <form class="post" action="/newUser" method="post">{% csrf_token %}
-            <label for="name">Prénom & nom : </label><input type="text" name="name" value=""><br>
-            <label for="adress">Adresse : </label><input type="text" name="adress" value=""><br>
-            <label for="numberBaguette">Nombre de baguettes : </label><input type="number" name="numberBaguette" value="1"><br>
-            <input type="submit" name="submit" value="Envoyer une demande">
-        </form>
+        <section class="container">
+        	<div class="row" style="align-items: center;">
+        		<div class="col-md-6 col-sm-8 center-block">
+        			<div class="education">
+        				<h2 class="white">Voir les demandes</h2>
+        				<div class="education-content">
+        					<button type="button" name="button" onclick="window.location.href='demandes'" style="color: black">GO</button>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <section class="container">
+        	<div class="row">
+        		<div class="col-md-6 col-sm-8">
+        			<div class="education">
+        				<h2 class="white">Faire une demande</h2>
+        				<div class="education-content">
+        					<button type="button" name="button" onclick="window.location.href='demander'" style="color: black">GO</button>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <section class="container">
+        	<div class="row">
+        		<div class="col-md-6 col-sm-8">
+        			<div class="education">
+        				<h2 class="white">Regardez si un généreux voisin a pensé à vous</h2>
+        				<div class="education-content">
+        					<button type="button" name="button" onclick="window.location.href='checkPickUp'" style="color: black">GO</button>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <script src="{% static 'voipain/js/jquery.js' %}"></script>
+        <script src="{% static 'voipain/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'voipain/js/custom.js' %}"></script>
     </body>
 </html>
